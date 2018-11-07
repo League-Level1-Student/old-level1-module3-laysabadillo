@@ -65,10 +65,18 @@ public class Jeopardy implements ActionListener {
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
-		firstButton.addActionListener(null);
-		secondButton.addActionListener(null);
+		firstButton.addActionListener(this);
+		secondButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
+		firstButton.setText("$100");
+		secondButton.setText("$200");
+		thirdButton = createButton("$300");
+		thirdButton.setText("$300");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$400");
+		fourthButton.setText("$400");
+		quizPanel.add(fourthButton);
 		
 		 /*
 		 * [optional] Use the showImage or playSound methods when the user answers a
@@ -104,42 +112,52 @@ public class Jeopardy implements ActionListener {
 		// If the buttonPressed was the firstButton
 			// Call the askQuestion() method
 		if(buttonPressed.equals(firstButton)) {
-			askQuestion("What Sport Involves Gloves?", "Boxing", 500);
+			askQuestion("What Sport Involves Gloves?", "Boxing", 100);
 		}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
-		
 		// If the buttonPressed was the secondButton
-
-			// Call the askQuestion() method with a harder question
-
+		// Call the askQuestion() method with a harder question
 		// Clear the text on the button that was pressed (set the button text to nothing)
+		
+		 if(buttonPressed.equals(secondButton)) {
+			 askQuestion("", "", 600);
+			 buttonPressed.setText("");
+		 }
 
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		
+		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
-		
+		JOptionPane.showInputDialog(null, "What Sport Involves A Racket With A Green And White Ball?");
 		// Stop the theme music when they have entered their response. Hint: use the sound variable 
+		sound.stop();
 		
 		// If the answer is correct
-
-			// Increase the score by the prizeMoney
-
-			// Pop up a message to tell the user they were correct
-
+		// Increase the score by the prizeMoney
+		// Pop up a message to tell the user they were correct
+		
+		if(correctAnswer.equals("Tennis")) {
+			score = score + 300;
+			JOptionPane.showMessageDialog(null, "You Were Correct");
+			
+			} 
+			
 		// Otherwise
-
-			// Decrement the score by the prizeMoney
-
-			// Pop up a message to tell the user they were wrong and give them the correct answer
-
+		// Decrement the score by the prizeMoney
+		// Pop up a message to tell the user they were wrong and give them the correct answer
 		// Call the updateScore() method
-
-	}
+			
+			else { 
+			score = score - 300;
+			JOptionPane.showMessageDialog(null, "You Were Wrong, The Answer Was Tennis");
+			updateScore();
+			
+			}
+		}
+		
 
 	public void playJeopardyTheme() {
 		try {
