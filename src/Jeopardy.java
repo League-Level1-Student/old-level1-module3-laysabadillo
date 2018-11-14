@@ -67,9 +67,11 @@ public class Jeopardy implements ActionListener {
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this );
 		// 12. Write the code to complete the actionPerformed() method below
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
-		firstButton.setText("$100");
+		firstButton.setText("$100"); 
 		secondButton.setText("$200");
 		thirdButton = createButton("$300");
 		thirdButton.setText("$300");
@@ -112,15 +114,15 @@ public class Jeopardy implements ActionListener {
 		// If the buttonPressed was the firstButton
 			// Call the askQuestion() method
 		if(buttonPressed.equals(firstButton)) {
-			askQuestion("What Sport Involves Gloves?", "Boxing", 100);
+			
 		}
+		
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 		// If the buttonPressed was the secondButton
 		// Call the askQuestion() method with a harder question
 		// Clear the text on the button that was pressed (set the button text to nothing)
-		
-		 if(buttonPressed.equals(secondButton)) {
-			 askQuestion("", "", 600);
+		if(buttonPressed.equals(secondButton)) {
+			 askQuestion("What Sport Involves Gloves", "Boxing", 600);
 			 buttonPressed.setText("");
 		 }
 
@@ -129,9 +131,10 @@ public class Jeopardy implements ActionListener {
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
+		
 		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showInputDialog(null, "What Sport Involves A Racket With A Green And White Ball?");
+		String answer = JOptionPane.showInputDialog("What Sport Involves A Racket With A Green And White Ball?");
 		// Stop the theme music when they have entered their response. Hint: use the sound variable 
 		sound.stop();
 		
@@ -139,9 +142,10 @@ public class Jeopardy implements ActionListener {
 		// Increase the score by the prizeMoney
 		// Pop up a message to tell the user they were correct
 		
-		if(correctAnswer.equals("Tennis")) {
-			score = score + 300;
+		if(answer.equals("Tennis")) {
 			JOptionPane.showMessageDialog(null, "You Were Correct");
+			score = score + 300;
+			updateScore();
 			
 			} 
 			
