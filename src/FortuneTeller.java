@@ -30,13 +30,14 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 // 1. Choose an image for your fortune teller and put it in your default package
    	 fortuneTellerImage = ImageIO.read(getClass().getResource("fortune teller.png"));
    	 // 2. Adjust the frameWidth and frameHeight variables to fit your image nicely (doesn’t need a new line of code)
+   	  
    	 // 4. add a mouse listener to the frame
-
+   	 frame.addMouseListener(null);
     }
 
     static void begin() {
    	 // 3. Welcome the user. Give them a hint for the secret location.
-
+    	JOptionPane.showMessageDialog(null, "Welcome. You'll be close to the secret location when a question pops up.");
     }
 
     @Override
@@ -44,21 +45,21 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 int mouseX = e.getX();
    	 int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-
+   	 System.out.println(mouseX);
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 0;
-   	 int secretLocationY = 0;
+   	 int secretLocationX = 15;
+   	 int secretLocationY = 690;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
-
+   		 JOptionPane.showInputDialog(null,"Enter a Question for the Fortune Teller");
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
    		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
    		 // 10. Play the sound
 
    		 // 11. Use the pause() method below to wait until your music has finished
-
+   		 
    		 // 12. Insert your completed Magic 8 ball recipe (http://bit.ly/Zdrf6d) here
 
    	 }
